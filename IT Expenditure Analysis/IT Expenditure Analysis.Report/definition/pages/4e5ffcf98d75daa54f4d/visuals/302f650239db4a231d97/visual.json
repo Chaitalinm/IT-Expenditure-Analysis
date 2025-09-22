@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "302f650239db4a231d97",
+  "position": {
+    "x": 396.71094244149276,
+    "y": 296.31878557874762,
+    "z": 13000,
+    "height": 414.52245414294754,
+    "width": 429.09550917141053,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ITSpend"
+                    }
+                  },
+                  "Property": "Business Area"
+                }
+              },
+              "queryRef": "ITSpend.Business Area",
+              "nativeQueryRef": "Business Area",
+              "active": true,
+              "format": "G"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ITSpend"
+                    }
+                  },
+                  "Property": "Variance % Actual vs Plan"
+                }
+              },
+              "queryRef": "ITSpend.Variance % Actual vs Plan",
+              "nativeQueryRef": "Variance % Actual vs Plan"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ITSpend"
+                  }
+                },
+                "Property": "Variance % Actual vs Plan"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top Overspending Departments'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

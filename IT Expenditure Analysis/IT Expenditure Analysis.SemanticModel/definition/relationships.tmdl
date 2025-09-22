@@ -1,0 +1,5 @@
+relationship c2fd8a81-93a1-4f66-aa04-edea35ed7cf3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ITSpend.Datekey
+	toColumn: LocalDateTable_a4dd3c95-9236-463f-ad90-b98f7af525e3.Date
+

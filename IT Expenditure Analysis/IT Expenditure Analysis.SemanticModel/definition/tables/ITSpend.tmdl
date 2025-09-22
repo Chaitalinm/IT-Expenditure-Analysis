@@ -1,0 +1,212 @@
+table ITSpend
+	lineageTag: 592a2448-4067-40e6-bc9a-6095a373531c
+
+	measure 'Total Forecast' = SUM('ITSpend'[Forecast])
+		lineageTag: da51bc23-8020-42d3-9bca-5c993e062b2b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Plan' = SUM('ITSpend'[Plan])
+		lineageTag: ba80598c-a7f5-424d-a106-2ac35dbb716e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Actual' = SUM('ITSpend'[Actual])
+		lineageTag: f04b7388-bff2-4ec3-b2e7-c237c6c9d60d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance Actual vs Plan' = [Total Actual] - [Total Plan]
+		lineageTag: 524097dc-6f45-4390-8058-63d0e3298728
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance % Actual vs Plan' =
+			
+			DIVIDE([Variance Actual vs Plan], [Total Plan], 0)
+		lineageTag: 8f8d080b-f8a7-4dd4-ab43-45fd12a852f8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance Forecast vs Plan' = ```
+			[Total Forecast] - [Total Plan]
+			
+			```
+		lineageTag: 32ecdcf5-a093-493c-a0d2-38d5a08fd346
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance % Forecast vs Plan' =
+			
+			DIVIDE([Variance Forecast vs Plan], [Total Plan], 0)
+		lineageTag: c8efcb18-754d-41f1-9a4c-3fd6a58e9216
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure
+		lineageTag: 3c7d0184-96d9-42c4-8bac-ee96b932501c
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Actual YTD' = CALCULATE([Total Actual], DATESYTD(ITSpend[Datekey]))
+		lineageTag: e92ca171-80e0-4019-b175-5225d6c254bf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Measure 2'
+		lineageTag: 0778b87e-a2f1-4314-bd36-0d2b79ae33ab
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Plan YTD' = CALCULATE([Total Plan], DATESYTD(ITSpend[Datekey]))
+		lineageTag: 5de4a216-b6ac-463e-a1ad-253070bbe43a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Actual Prev Month' = CALCULATE([Total Actual], DATEADD(ITSpend[Datekey], -1, MONTH))
+		lineageTag: 64115082-de7a-4239-9ae7-74cb460f7f88
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Change Actual' = [Total Actual] - [Actual Prev Month]
+		lineageTag: 4be5689f-a4e8-46da-af07-1c0e651c260d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM % Actual' = DIVIDE([MoM Change Actual], [Actual Prev Month], 0)
+		lineageTag: a83e2b2c-70fb-4c22-a414-196af4656b65
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: string
+		lineageTag: 326d27b9-e633-4668-8b9d-5414756dadea
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business Area'
+		dataType: string
+		lineageTag: 2ef6e8e1-9c83-4018-a3c1-ec25088c2b30
+		summarizeBy: none
+		sourceColumn: Business Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: d6826dbd-bb91-45e9-af73-b7234b966982
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 3b6bc428-19f6-4378-837e-d68cd03b86ea
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IT Sub Area'
+		dataType: string
+		lineageTag: 71598164-f17f-42fa-80a4-b9cb9344c6c5
+		summarizeBy: none
+		sourceColumn: IT Sub Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IT Area'
+		dataType: string
+		lineageTag: 30209d90-19fa-4204-8c54-1d46a9587911
+		summarizeBy: none
+		sourceColumn: IT Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost element name'
+		dataType: string
+		lineageTag: 04344d0c-92f1-4e4a-8d6e-3dab93cdb433
+		summarizeBy: none
+		sourceColumn: Cost element name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Element Group'
+		dataType: string
+		lineageTag: 2d9ee2a0-2818-4dae-bf4b-19c9b4bad150
+		summarizeBy: none
+		sourceColumn: Cost Element Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Element Sub Group'
+		dataType: string
+		lineageTag: e067fbab-0a1d-42bc-b2b2-d9a4b24ea3e2
+		summarizeBy: none
+		sourceColumn: Cost Element Sub Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Actual
+		dataType: double
+		lineageTag: c9f3e5ae-b640-4bfb-9310-8fefc5f3d20f
+		summarizeBy: sum
+		sourceColumn: Actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Forecast
+		dataType: double
+		lineageTag: b801c92d-89b1-4773-afd6-68462e845fde
+		summarizeBy: sum
+		sourceColumn: Forecast
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Plan
+		dataType: double
+		lineageTag: a8bc0733-33d6-479b-b8f7-5136273e6fe9
+		summarizeBy: sum
+		sourceColumn: Plan
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Datekey
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3136b7a3-24f1-4726-a95f-9bfb1302ade1
+		summarizeBy: none
+		sourceColumn: Datekey
+
+		variation Variation
+			isDefault
+			relationship: c2fd8a81-93a1-4f66-aa04-edea35ed7cf3
+			defaultHierarchy: LocalDateTable_a4dd3c95-9236-463f-ad90-b98f7af525e3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition ITSpend = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({Data, #"Future Data"}),
+				    #"Added Custom" = Table.AddColumn(Source, "Datekey", each Date.FromText([Date] & " 2025")),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Datekey", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

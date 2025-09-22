@@ -1,0 +1,101 @@
+table 'Future Data'
+	lineageTag: 81f5fbe3-bb50-46c2-8da7-59f164014175
+
+	column Date
+		dataType: string
+		lineageTag: d179cc99-58a2-4801-8607-18ddce0ab101
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business Area'
+		dataType: string
+		lineageTag: ef890fb8-7062-4043-90e2-65d6c9822d01
+		summarizeBy: none
+		sourceColumn: Business Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: ecd0ec23-92c2-435f-95a8-eb4308744c74
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 2b3e98f4-0dff-4651-873b-4bd93c50da57
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IT Sub Area'
+		dataType: string
+		lineageTag: c75189d7-872b-4dfc-ba97-c60a260318ab
+		summarizeBy: none
+		sourceColumn: IT Sub Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IT Area'
+		dataType: string
+		lineageTag: 21a3f97d-8587-4963-b186-048eaa493751
+		summarizeBy: none
+		sourceColumn: IT Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost element name'
+		dataType: string
+		lineageTag: b2040b57-8f7c-44af-ab9b-217b57b32d61
+		summarizeBy: none
+		sourceColumn: Cost element name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Element Group'
+		dataType: string
+		lineageTag: 06775ded-7f39-458f-a322-3b13b18110d8
+		summarizeBy: none
+		sourceColumn: Cost Element Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Element Sub Group'
+		dataType: string
+		lineageTag: 193becf7-2d23-4017-a4ab-0eea29cb9daf
+		summarizeBy: none
+		sourceColumn: Cost Element Sub Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Actual
+		dataType: double
+		lineageTag: 8b790c88-b67d-42fc-892a-e93d7608e8ba
+		summarizeBy: sum
+		sourceColumn: Actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Future Data' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Chaitali\Downloads\IT Expenditure dataset.xlsx"), null, true),
+				    #"Future Data_Sheet" = Source{[Item="Future Data",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Future Data_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type text}, {"Business Area", type text}, {"Region", type text}, {"Country", type text}, {"IT Sub Area", type text}, {"IT Area", type text}, {"Cost element name", type text}, {"Cost Element Group", type text}, {"Cost Element Sub Group", type text}, {"Actual", type number}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
