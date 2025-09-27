@@ -1,85 +1,59 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "19bef55e95c630a4ea50",
+  "name": "5f5ecbd0ce0e5e0787ed",
   "position": {
-    "x": 395,
-    "y": 72,
-    "z": 8000,
-    "height": 100,
-    "width": 210,
-    "tabOrder": 8000
+    "x": 10,
+    "y": 10,
+    "z": 2000,
+    "height": 236.66666666666669,
+    "width": 180,
+    "tabOrder": 2000
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "slicer",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "ITSpend"
                     }
                   },
-                  "Property": "Variance Actual vs Plan"
+                  "Property": "Region"
                 }
               },
-              "queryRef": "ITSpend.Variance Actual vs Plan",
-              "nativeQueryRef": "Variance Actual vs Plan"
+              "queryRef": "ITSpend.Region",
+              "nativeQueryRef": "Region",
+              "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "ITSpend"
-                  }
-                },
-                "Property": "Variance Actual vs Plan"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "objects": {
-      "labels": [
+      "data": [
         {
           "properties": {
-            "bold": {
+            "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "italic": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "39D"
+                  "Value": "'Basic'"
                 }
               }
             }
           }
         }
       ],
-      "categoryLabels": [
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "header": [
         {
           "properties": {
             "bold": {
@@ -88,18 +62,24 @@
                   "Value": "true"
                 }
               }
-            },
-            "underline": {
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "singleSelect": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
             },
-            "fontSize": {
+            "selectAllCheckboxEnabled": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "true"
                 }
               }
             }
@@ -121,19 +101,41 @@
           }
         }
       ],
-      "title": [
+      "background": [
         {
           "properties": {
-            "show": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FBFBBB'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "left": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "5D"
                 }
               }
             }
           }
         }
       ]
+    },
+    "syncGroup": {
+      "groupName": "Region",
+      "fieldChanges": true,
+      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

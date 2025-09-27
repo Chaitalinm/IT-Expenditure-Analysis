@@ -1,19 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "528b7a9a5e0125a9af78",
+  "name": "567fd22b02618d5cbb04",
   "position": {
-    "x": 1060,
-    "y": 72,
+    "x": 845.2371916508539,
+    "y": 84.199873497786214,
     "z": 0,
-    "height": 100,
-    "width": 210,
+    "height": 623.40290955091712,
+    "width": 424.23782416192284,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "barChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ITSpend"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "ITSpend.Region",
+              "nativeQueryRef": "Region",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
           "projections": [
             {
               "field": {
@@ -23,11 +42,11 @@
                       "Entity": "ITSpend"
                     }
                   },
-                  "Property": "Variance % Forecast vs Plan"
+                  "Property": "Variance % Actual vs Plan"
                 }
               },
-              "queryRef": "ITSpend.Variance % Forecast vs Plan",
-              "nativeQueryRef": "Variance % Forecast vs Plan"
+              "queryRef": "ITSpend.Variance % Actual vs Plan",
+              "nativeQueryRef": "Variance % Actual vs Plan"
             }
           ]
         }
@@ -42,49 +61,13 @@
                     "Entity": "ITSpend"
                   }
                 },
-                "Property": "Variance % Forecast vs Plan"
+                "Property": "Variance % Actual vs Plan"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
-    },
-    "objects": {
-      "categoryLabels": [
-        {
-          "properties": {
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "11D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "labels": [
-        {
-          "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "39D"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "visualContainerObjects": {
       "border": [
@@ -94,6 +77,19 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top Overspending Regions'"
                 }
               }
             }

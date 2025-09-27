@@ -1,85 +1,59 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "19bef55e95c630a4ea50",
+  "name": "4c9cc1275c9cc30a4abb",
   "position": {
-    "x": 395,
-    "y": 72,
-    "z": 8000,
-    "height": 100,
-    "width": 210,
-    "tabOrder": 8000
+    "x": 10,
+    "y": 256.66666666666669,
+    "z": 4000,
+    "height": 453.33333333333337,
+    "width": 180,
+    "tabOrder": 4000
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "slicer",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "ITSpend"
                     }
                   },
-                  "Property": "Variance Actual vs Plan"
+                  "Property": "Business Area"
                 }
               },
-              "queryRef": "ITSpend.Variance Actual vs Plan",
-              "nativeQueryRef": "Variance Actual vs Plan"
+              "queryRef": "ITSpend.Business Area",
+              "nativeQueryRef": "Business Area",
+              "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "ITSpend"
-                  }
-                },
-                "Property": "Variance Actual vs Plan"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "objects": {
-      "labels": [
+      "data": [
         {
           "properties": {
-            "bold": {
+            "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "italic": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "39D"
+                  "Value": "'Basic'"
                 }
               }
             }
           }
         }
       ],
-      "categoryLabels": [
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "header": [
         {
           "properties": {
             "bold": {
@@ -88,18 +62,24 @@
                   "Value": "true"
                 }
               }
-            },
-            "underline": {
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "singleSelect": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
             },
-            "fontSize": {
+            "selectAllCheckboxEnabled": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "true"
                 }
               }
             }
@@ -121,19 +101,28 @@
           }
         }
       ],
-      "title": [
+      "background": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FBFBBB'"
+                    }
+                  }
                 }
               }
             }
           }
         }
       ]
+    },
+    "syncGroup": {
+      "groupName": "Business Area",
+      "fieldChanges": true,
+      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "71126252154e75fe7d81",
+  "name": "dbed6f4558402a3d9e8c",
   "position": {
-    "x": 840.37950664136622,
+    "x": 395.09171410499687,
     "y": 296.31878557874762,
-    "z": 7000,
+    "z": 13000,
     "height": 414.52245414294754,
     "width": 430.71473750790642,
-    "tabOrder": 7000
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -23,11 +23,11 @@
                       "Entity": "ITSpend"
                     }
                   },
-                  "Property": "Business Area"
+                  "Property": "Region"
                 }
               },
-              "queryRef": "ITSpend.Business Area",
-              "nativeQueryRef": "Business Area",
+              "queryRef": "ITSpend.Region",
+              "nativeQueryRef": "Region",
               "active": true
             }
           ]
@@ -104,7 +104,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Variance by Business Area'"
+                  "Value": "'Variance by Region'"
                 }
               }
             }
